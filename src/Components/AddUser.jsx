@@ -1,13 +1,11 @@
 import React, { Component } from 'react'
 import { Navigate } from 'react-router-dom';
-import { LoginContext } from '../LoginContext';
-import Alert from './Alert';
 
 export default class AddUser extends Component {
 
     constructor(props) {
         super(props)
-        this.state = { user: { name: '', email: '', role: 'Contributor', owner:localStorage.getItem('userId')} }
+        this.state = { user: { name: '', email: '', role: 'Contributor', owner:localStorage.getItem('userId')}, isLoggedIn:localStorage.getItem('isLoggedIn') }
     }
 
     async addUser(e) {
@@ -29,10 +27,7 @@ export default class AddUser extends Component {
     }
 
     render() {
-        return (
-            <LoginContext.Consumer>
-                {isLoggedIn => {
-                    return !isLoggedIn ? <Navigate to='/signup' /> :
+        return (!this.state.isLoggedIn ? <Navigate to='/signup' /> :
                         <div className='container-fluid my-5'>
                             <form method='POST' className='col-sm-4' onSubmit={this.addUser.bind(this)}>
                                 <div className="mb-3">
@@ -55,8 +50,6 @@ export default class AddUser extends Component {
                                 <button type="submit" className="btn btn-primary mt-2">Add User</button>
                             </form>
                         </div>
-                }}
-            </LoginContext.Consumer>
         )
     }
 }

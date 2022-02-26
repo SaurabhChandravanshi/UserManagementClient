@@ -1,11 +1,15 @@
 import React, { Component } from 'react'
-import { Link, Navigate } from 'react-router-dom'
-import { LoginContext } from '../LoginContext'
+import { Link } from 'react-router-dom'
 
 export default class Header extends Component {
 
+    constructor(props) {
+        super(props)
+    }
+
     signOut() {
         localStorage.removeItem('isLoggedIn')
+        this.props.toggleLogin()
     }
     render() {
         return (
@@ -19,15 +23,13 @@ export default class Header extends Component {
                         <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
                             <div className="navbar-nav ms-auto">
                                 <Link className="nav-link active" aria-current="page" to={'/'}>Home</Link>
-                                <LoginContext.Consumer>
-                                    {isLoggedIn => {
-                                        return isLoggedIn ? <a className='nav-link' onClick={this.signOut.bind(this)}>Logout</a> : 
+                                {
+                                    this.props.isLoggedIn ? <a className='nav-link' style={{cursor:'pointer'}} onClick={this.signOut.bind(this)}>Logout</a> :
                                         <>
-                                        <Link className="nav-link" to={'signup'}>Signup</Link>
-                                        <Link className="nav-link" to={'signin'}>Login</Link>
+                                            <Link className="nav-link" to={'signup'}>Signup</Link>
+                                            <Link className="nav-link" to={'signin'}>Login</Link>
                                         </>
-                                    }}
-                                </LoginContext.Consumer>
+                                }
                             </div>
                         </div>
                     </div>
