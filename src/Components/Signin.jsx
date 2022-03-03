@@ -11,7 +11,7 @@ export default class Signin extends Component {
     async signin(e) {
         e.preventDefault();
         try {
-            const response = await fetch('http://localhost:4000/api/auth', {
+            const response = await fetch('http://localhost:4000/api/auth/signin', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -22,10 +22,9 @@ export default class Signin extends Component {
                 })
             });
             const data = await (await response).json();
-            console.log(data)
             if (data !== null && data.status === 'success') {
                 localStorage.setItem('isLoggedIn', true)
-                localStorage.setItem('userId', data.userId)
+                localStorage.setItem('userId', data.id)
                 this.props.toggleLogin()
                 this.setState({ ...this.state, isLoggedIn: true })
             } else {

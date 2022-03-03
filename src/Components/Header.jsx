@@ -11,6 +11,7 @@ export default class Header extends Component {
         localStorage.removeItem('isLoggedIn')
         this.props.toggleLogin()
     }
+    
     render() {
         return (
             <>

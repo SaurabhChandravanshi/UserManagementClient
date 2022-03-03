@@ -1,5 +1,4 @@
 import React from 'react'
-import { Navigate } from 'react-router-dom'
 import UpdateUser from './UpdateUser'
 
 export default function UserList(props) {

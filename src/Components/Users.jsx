@@ -8,8 +8,8 @@ export default function Users() {
 
     const deleteUser = async (id) => {
         try {
-            const response = await fetch('http://localhost:4000/api/deleteUser', {
-            method:'POST',
+            const response = await fetch(`http://localhost:4000/api/user/${id}`, {
+            method:'DELETE',
             headers: {
                 'Content-Type':'application/json'
             },
@@ -24,7 +24,7 @@ export default function Users() {
     }
     async function fetchUsers() {
         try {
-            const response = await fetch('http://localhost:4000/api/user?owner='+localStorage.getItem('userId'),
+            const response = await fetch(`http://localhost:4000/api/user/${localStorage.getItem('userId')}`,
             {
                 method:'GET',
                 headers:{
@@ -32,7 +32,6 @@ export default function Users() {
                 }
             })
             const data = await response.json();
-
             if(data != null && data.status === 'success') {
                 setUserData(data.userArray);
             }
