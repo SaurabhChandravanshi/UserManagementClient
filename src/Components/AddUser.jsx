@@ -10,7 +10,7 @@ export default class AddUser extends Component {
 
     async addUser(e) {
         e.preventDefault();
-        const response = await fetch('http://localhost:4000/api/user', {
+        const response = await fetch('https://users-mgmt.herokuapp.com/api/user', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

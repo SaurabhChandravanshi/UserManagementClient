@@ -8,7 +8,7 @@ export default function Users() {
 
     const deleteUser = async (id) => {
         try {
-            const response = await fetch(`http://localhost:4000/api/user/${id}`, {
+            const response = await fetch(`https://users-mgmt.herokuapp.com/api/user/${id}`, {
             method:'DELETE',
             headers: {
                 'Content-Type':'application/json'
@@ -24,7 +24,7 @@ export default function Users() {
     }
     async function fetchUsers() {
         try {
-            const response = await fetch(`http://localhost:4000/api/user/${localStorage.getItem('userId')}`,
+            const response = await fetch(`https://users-mgmt.herokuapp.com/api/user/${localStorage.getItem('userId')}`,
             {
                 method:'GET',
                 headers:{

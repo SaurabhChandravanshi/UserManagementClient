@@ -11,7 +11,7 @@ export default function UpdateUser({ user }) {
             alert('All fields are required with valid input.')
         } else {
             try {
-                const res = await fetch(`http://localhost:4000/api/user/${user._id}`, {
+                const res = await fetch(`https://users-mgmt.herokuapp.com/api/user/${user._id}`, {
                     method: 'PUT',
                     headers: {
                         'Content-Type': 'application/json'

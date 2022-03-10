@@ -11,7 +11,7 @@ export default class Signup extends Component {
 
     async register(e) {
         e.preventDefault();
-        const response = await fetch('http://localhost:4000/api/auth/signup', {
+        const response = await fetch('https://users-mgmt.herokuapp.com/api/auth/signup', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
